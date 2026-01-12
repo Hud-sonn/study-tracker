@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Tracker – Home</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<input type="checkbox" id="nav-toggle" hidden>
+
+<label for="nav-toggle" class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+<label for="nav-toggle" class="overlay"></label>
+
+<div class="app-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="sidebar-logo">📚 Study Tracker</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="homepage.html" class="sidebar-link active">🏠 Home</a>
+      <a href="assignments.html" class="sidebar-link">📋 Assignments</a>
+      <a href="#" class="sidebar-link">📅 Class Schedule</a>
+      <a href="#" class="sidebar-link">✓ Tasks</a>
+      <a href="profile.html" class="sidebar-link">👤 Profile</a>
+      <a href="admin.html" class="sidebar-link">📊 Analytics</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- STEP 2: User Overview Card -->
+    <section class="user-overview fade-in">
+      <div class="user-card">
+        <div class="user-info">
+          <div class="avatar">SH</div>
+          <div class="user-greeting">
+            <div class="username">Welcome back, Student!</div>
+            <div class="user-meta">You're making great progress. Keep it up! 🚀</div>
+          </div>
+        </div>
+        <div class="overview-stats">
+          <div class="overview-item">
+            <h3>5</h3>
+            <span>Assignments Added</span>
+          </div>
+          <div class="overview-item">
+            <h3>4</h3>
+            <span>Classes Added</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Recent Assignments Card -->
+    <section class="assignments-overview section-card fade-in">
+      <div class="section-header">
+        <h2>📚 Recent Assignments</h2>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-scroll">
+        <div class="assignment-card">
+          <div class="card-header">
+            <div class="assignment-name">Math Homework</div>
+            <span class="course-badge">MTH 202</span>
+          </div>
+          <div class="card-body">
+            <p class="course-name">Calculus I</p>
+            <div class="due-date">
+              <span class="label">Due:</span>
+              <span class="date">Jan 15, 2026</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="status-dot pending"></span>
+            <span class="status-text">Pending</span>
+          </div>
+        </div>
+
+        <div class="assignment-card">
+          <div class="card-header">
+            <div class="assignment-name">Physics Lab Report</div>
+            <span class="course-badge">PHY 204</span>
+          </div>
+          <div class="card-body">
+            <p class="course-name">Physics II</p>
+            <div class="due-date">
+              <span class="label">Due:</span>
+              <span class="date">Jan 17, 2026</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="status-dot pending"></span>
+            <span class="status-text">Pending</span>
+          </div>
+        </div>
+
+        <div class="assignment-card">
+          <div class="card-header">
+            <div class="assignment-name">CS Project</div>
+            <span class="course-badge">CSC 201</span>
+          </div>
+          <div class="card-body">
+            <p class="course-name">Data Structures</p>
+            <div class="due-date">
+              <span class="label">Due:</span>
+              <span class="date">Jan 20, 2026</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="status-dot pending"></span>
+            <span class="status-text">Pending</span>
+          </div>
+        </div>
+
+        <div class="assignment-card">
+          <div class="card-header">
+            <div class="assignment-name">English Essay</div>
+            <span class="course-badge">ENG 205</span>
+          </div>
+          <div class="card-body">
+            <p class="course-name">Literature</p>
+            <div class="due-date">
+              <span class="label">Due:</span>
+              <span class="date">Jan 22, 2026</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="status-dot pending"></span>
+            <span class="status-text">Pending</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Upcoming Classes Card -->
+    <section class="classes-overview section-card fade-in">
+      <div class="section-header">
+        <h2>🏫 Upcoming Classes</h2>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+      <div class="card-scroll">
+        <div class="class-card">
+          <div class="class-name">Calculus I</div>
+          <div class="class-code">MTH 202</div>
+          <div class="class-time">
+            <span>Mon, Wed, Fri</span>
+            <span class="time-value">10:00 AM</span>
+          </div>
+          <div class="class-location">Room 301</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">Physics II</div>
+          <div class="class-code">PHY 204</div>
+          <div class="class-time">
+            <span>Tue, Thu</span>
+            <span class="time-value">2:00 PM</span>
+          </div>
+          <div class="class-location">Lab 105</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">Data Structures</div>
+          <div class="class-code">CSC 201</div>
+          <div class="class-time">
+            <span>Mon, Wed</span>
+            <span class="time-value">1:00 PM</span>
+          </div>
+          <div class="class-location">Room 210</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">Literature</div>
+          <div class="class-code">ENG 205</div>
+          <div class="class-time">
+            <span>Tue, Thu</span>
+            <span class="time-value">11:00 AM</span>
+          </div>
+          <div class="class-location">Room 105</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 5: Today's Tasks Section -->
+    <section class="today-tasks section-card fade-in">
+      <div class="section-header">
+        <h2>📝 Today's Tasks</h2>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-1">
+          <label for="task-1" class="task-label">
+            <span class="checkmark"></span>
+            <span class="task-text">Review calculus notes for tomorrow's class</span>
+          </label>
+        </div>
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-2">
+          <label for="task-2" class="task-label">
+            <span class="checkmark"></span>
+            <span class="task-text">Complete 5 problems from Chapter 3</span>
+          </label>
+        </div>
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-3">
+          <label for="task-3" class="task-label">
+            <span class="checkmark"></span>
+            <span class="task-text">Start reading assignment for English class</span>
+          </label>
+        </div>
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" id="task-4">
+          <label for="task-4" class="task-label">
+            <span class="checkmark"></span>
+            <span class="task-text">Prepare lab report outline</span>
+          </label>
+        </div>
+      </div>
+      <div class="empty-state hidden">
+        <p>✨ No tasks for today — add one to get started</p>
+      </div>
+    </section>
+
+    <!-- STEP 6: Study Progress Summary -->
+    <section class="progress-summary section-card fade-in">
+      <div class="section-header">
+        <h2>📊 This Week's Progress</h2>
+      </div>
+      <div class="progress-container">
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Tasks Completed</span>
+            <span class="progress-percentage">60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%"></div>
+          </div>
+          <div class="progress-meta">9 of 15 tasks done</div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Assignments On Track</span>
+            <span class="progress-percentage">80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+          <div class="progress-meta">4 of 5 assignments progressing</div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-header">
+            <span class="progress-label">Classes Attended</span>
+            <span class="progress-percentage">100%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 100%"></div>
+          </div>
+          <div class="progress-meta">Perfect attendance this week!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 7: Quick Actions Section -->
+    <section class="quick-actions section-card fade-in">
+      <div class="section-header">
+        <h2>⚡ Quick Actions</h2>
+      </div>
+      <div class="actions-grid">
+        <a href="#" class="action-button add-assignment">
+          <div class="action-icon">➕</div>
+          <div class="action-text">
+            <span class="action-title">Add Assignment</span>
+            <span class="action-desc">Create a new assignment</span>
+          </div>
+        </a>
+        <a href="#" class="action-button add-class">
+          <div class="action-icon">📚</div>
+          <div class="action-text">
+            <span class="action-title">Add Class</span>
+            <span class="action-desc">Register a new class</span>
+          </div>
+        </a>
+        <a href="#" class="action-button add-task">
+          <div class="action-icon">✓</div>
+          <div class="action-text">
+            <span class="action-title">Add Task</span>
+            <span class="action-desc">Create a task for today</span>
+          </div>
+        </a>
+        <a href="#" class="action-button view-schedule">
+          <div class="action-icon">📅</div>
+          <div class="action-text">
+            <span class="action-title">View Schedule</span>
+            <span class="action-desc">See your full calendar</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- STEP 8: Announcements / Tips -->
+    <section class="announcements section-card fade-in">
+      <div class="section-header">
+        <h2>💡 Study Tips</h2>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🎯</div>
+        <div class="tip-content">
+          <h3>Break Your Work Into Chunks</h3>
+          <p>Use the Pomodoro Technique: study for 25 minutes, then take a 5-minute break. It helps maintain focus and retention!</p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🧠</div>
+        <div class="tip-content">
+          <h3>Active Recall Beats Passive Reading</h3>
+          <p>Test yourself on material rather than just re-reading it. It strengthens long-term memory and understanding.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script type="module" src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Check authentication on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const userEmail = localStorage.getItem('userEmail');
+    const userName = localStorage.getItem('userName');
+    
+    if (!userEmail) {
+      window.location.href = 'Login.html';
+      return;
+    }
+
+    // Update welcome message with user name
+    const userGreeting = document.querySelector('.username');
+    if (userGreeting && userName) {
+      userGreeting.textContent = `Welcome back, ${userName}!`;
+    }
+
+    // Add logout option to sidebar (optional enhancement)
+    const sidebar = document.querySelector('.sidebar-nav');
+    const logoutBtn = document.createElement('a');
+    logoutBtn.className = 'sidebar-link';
+    logoutBtn.innerHTML = '🚪 Logout';
+    logoutBtn.style.cursor = 'pointer';
+    logoutBtn.onclick = (e) => {
+      e.preventDefault();
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userName');
+        window.location.href = 'Login.html';
+      }
+    };
+    sidebar.appendChild(logoutBtn);
+  });
+</script>
+</body>
+</html>

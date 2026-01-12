@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Tracker – Assignments</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .assignments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .add-assignment-btn {
+      background: linear-gradient(135deg, #a855f7, #d946ef);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .add-assignment-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(168, 85, 247, 0.3);
+    }
+
+    .add-assignment-btn:active {
+      transform: translateY(0);
+    }
+
+    .assignments-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      background: #1a1a23;
+      color: #a0aec0;
+      border: 1px solid #2d2d38;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .filter-btn.active {
+      background: #a855f7;
+      color: white;
+      border-color: #a855f7;
+    }
+
+    .filter-btn:hover {
+      border-color: #a855f7;
+    }
+
+    /* Assignment Form Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #1a1a23;
+      border-radius: 15px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid #2d2d38;
+      animation: slideDown 0.3s ease;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      color: #fff;
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #a0aec0;
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: #0f0f14;
+      border: 1px solid #2d2d38;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #a855f7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 25px;
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      background: #2d2d38;
+      color: #cbd5e1;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #3d3d48;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #a855f7, #d946ef);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Assignments List */
+    .assignments-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .assignment-item {
+      background: #1a1a23;
+      border: 1px solid #2d2d38;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s;
+      animation: slideDown 0.3s ease;
+    }
+
+    .assignment-item:hover {
+      border-color: #a855f7;
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .assignment-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .assignment-item-title {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      flex: 1;
+    }
+
+    .assignment-item-course {
+      color: #a0aec0;
+      font-size: 12px;
+      background: #0f0f14;
+      padding: 4px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+
+    .assignment-item-description {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin: 12px 0;
+      line-height: 1.5;
+    }
+
+    .assignment-item-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 15px 0;
+      border-top: 1px solid #2d2d38;
+      border-bottom: 1px solid #2d2d38;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      color: #a0aec0;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .assignment-item-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-badge.pending {
+      background: #7c2d12;
+      color: #fed7aa;
+    }
+
+    .status-badge.completed {
+      background: #134e4a;
+      color: #a7f3d0;
+    }
+
+    .status-badge.submitted {
+      background: #1e3a8a;
+      color: #bfdbfe;
+    }
+
+    .assignment-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      border: 1px solid #2d2d38;
+      background: #0f0f14;
+      color: #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #1a1a23;
+      border-color: #a855f7;
+      color: #a855f7;
+    }
+
+    .action-btn.delete:hover {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #a0aec0;
+    }
+
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+      color: #cbd5e1;
+      margin: 0 0 10px 0;
+    }
+
+    .empty-state p {
+      margin: 0;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .assignments-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .add-assignment-btn {
+        width: 100%;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 20px;
+      }
+
+      .assignments-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle" hidden>
+
+<label for="nav-toggle" class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+<label for="nav-toggle" class="overlay"></label>
+
+<div class="app-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="sidebar-logo">📚 Study Tracker</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="homepage.html" class="sidebar-link">🏠 Home</a>
+      <a href="assignments.html" class="sidebar-link active">📋 Assignments</a>
+      <a href="#" class="sidebar-link">📅 Class Schedule</a>
+      <a href="#" class="sidebar-link">✓ Tasks</a>
+      <a href="profile.html" class="sidebar-link">👤 Profile</a>
+      <a href="admin.html" class="sidebar-link">📊 Analytics</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="fade-in">
+      <div class="assignments-header">
+        <h1>Assignments</h1>
+        <button class="add-assignment-btn" id="add-btn">+ Add Assignment</button>
+      </div>
+
+      <div class="assignments-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="submitted">Submitted</button>
+      </div>
+
+      <div class="assignments-grid" id="assignments-grid">
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <h3>No assignments yet</h3>
+          <p>Add your first assignment to get started!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Add/Edit Assignment Modal -->
+<div class="modal" id="assignment-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modal-title">Add Assignment</h2>
+      <button class="close-btn" id="close-modal">&times;</button>
+    </div>
+    
+    <form id="assignment-form">
+      <div class="form-group">
+        <label for="assignment-title">Assignment Title *</label>
+        <input 
+          type="text" 
+          id="assignment-title" 
+          placeholder="e.g., Math Homework"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="assignment-class">Class/Course *</label>
+        <select id="assignment-class" required>
+          <option value="">Select a class</option>
+          <option value="MTH 202">Calculus I (MTH 202)</option>
+          <option value="PHY 204">Physics II (PHY 204)</option>
+          <option value="CSC 201">Data Structures (CSC 201)</option>
+          <option value="ENG 205">Literature (ENG 205)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="assignment-description">Description</label>
+        <textarea 
+          id="assignment-description" 
+          placeholder="Add assignment details..."
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="assignment-duedate">Due Date *</label>
+        <input 
+          type="date" 
+          id="assignment-duedate"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="assignment-status">Status</label>
+        <select id="assignment-status">
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+          <option value="submitted">Submitted</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+        <button type="submit" class="btn-primary">Save Assignment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="module">
+  import { initUserNotifications } from './js/notifications.js';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    initUserNotifications();
+  });
+</script>
+<script type="module" src="js/auth.js"></script>
+<script src="js/assignments.js"></script>
+</body>
+</html>

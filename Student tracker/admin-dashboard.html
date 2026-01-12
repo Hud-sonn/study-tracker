@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Study Tracker</title>
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>📊 Admin Panel</h2>
+        <button class="close-sidebar" id="closeSidebar">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-link active" data-section="overview">🏠 Overview</a>
+        <a href="#" class="nav-link" data-section="users">👥 Users</a>
+        <a href="#" class="nav-link" data-section="assignments">📝 Assignments</a>
+        <a href="#" class="nav-link" data-section="classes">📚 Classes</a>
+        <a href="#" class="nav-link" data-section="notifications">🔔 Notifications</a>
+        <hr style="margin: 20px 0; border: none; border-top: 1px solid #e0e0e0;">
+        <a href="#" class="nav-link logout" id="logoutBtn">🚪 Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <h1>Admin Dashboard</h1>
+        <div class="header-right">
+          <span class="user-info" id="userInfo">Admin</span>
+          <span class="logout-icon" id="logoutIconBtn">🚪</span>
+        </div>
+      </header>
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        <!-- Overview Section -->
+        <section class="section active" id="overview-section">
+          <h2>Dashboard Overview</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-content">
+                <h3>Total Users</h3>
+                <p class="stat-value" id="totalUsers">0</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">📝</div>
+              <div class="stat-content">
+                <h3>Total Assignments</h3>
+                <p class="stat-value" id="totalAssignments">0</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-content">
+                <h3>Completed</h3>
+                <p class="stat-value" id="completedAssignments">0</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-content">
+                <h3>Pending</h3>
+                <p class="stat-value" id="pendingAssignments">0</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">📚</div>
+              <div class="stat-content">
+                <h3>Total Classes</h3>
+                <p class="stat-value" id="totalClasses">0</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">⚠️</div>
+              <div class="stat-content">
+                <h3>Overdue</h3>
+                <p class="stat-value" id="overdueAssignments">0</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="activity-section">
+            <h3>Recent Activity</h3>
+            <div id="recentActivityList" class="activity-list">
+              <p class="empty-state">No recent activity</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Users Section -->
+        <section class="section" id="users-section">
+          <h2>Users Management</h2>
+          <div id="usersList" class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Join Date</th>
+                  <th>Last Active</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr>
+                  <td colspan="4" class="empty-state">Loading users...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Assignments Section -->
+        <section class="section" id="assignments-section">
+          <h2>Assignments Overview</h2>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-status="all">All</button>
+            <button class="filter-btn" data-status="pending">Pending</button>
+            <button class="filter-btn" data-status="completed">Completed</button>
+            <button class="filter-btn" data-status="overdue">Overdue</button>
+          </div>
+          <div id="assignmentsList" class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Course</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th>Days Left</th>
+                </tr>
+              </thead>
+              <tbody id="assignmentsTableBody">
+                <tr>
+                  <td colspan="5" class="empty-state">Loading assignments...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Classes Section -->
+        <section class="section" id="classes-section">
+          <h2>Classes Management</h2>
+          <div id="classesList" class="classes-grid">
+            <p class="empty-state">No classes available</p>
+          </div>
+        </section>
+
+        <!-- Notifications Section -->
+        <section class="section" id="notifications-section">
+          <h2>Notifications & Alerts</h2>
+          
+          <div class="notification-category">
+            <h3>🔔 Assignment Alerts</h3>
+            <div id="assignmentNotifications" class="notification-list">
+              <p class="empty-state">No assignment alerts</p>
+            </div>
+          </div>
+
+          <div class="notification-category">
+            <h3>📚 Class Alerts</h3>
+            <div id="classNotifications" class="notification-list">
+              <p class="empty-state">No class alerts</p>
+            </div>
+          </div>
+
+          <div class="notification-category">
+            <h3>⚠️ System Alerts</h3>
+            <div id="systemNotifications" class="notification-list">
+              <p class="empty-state">No system alerts</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>

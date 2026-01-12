@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Tracker - Login</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <input type="checkbox" id="toggle">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <label for="toggle" class="tab login-tab">Login</label>
+      <label for="toggle" class="tab signup-tab">Sign Up</label>
+      <div class="indicator"></div>
+    </div>
+
+    <!-- Forms -->
+    <div class="forms">
+
+      <!-- Login Form -->
+      <form class="form login" id="loginForm">
+        <h2>Welcome Back</h2>
+        <p class="form-subtitle">Continue your learning journey</p>
+        
+        <div class="form-group">
+          <input 
+            type="email" 
+            id="loginEmail" 
+            placeholder="Email address" 
+            required
+            autocomplete="email"
+          >
+          <span class="error-message" id="loginEmailError"></span>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password" 
+            id="loginPassword" 
+            placeholder="Password" 
+            required
+            autocomplete="current-password"
+          >
+          <span class="error-message" id="loginPasswordError"></span>
+        </div>
+
+        <a href="#" class="forgot-password">Forgot password?</a>
+
+        <button type="submit" class="submit-btn" id="loginBtn">
+          <span class="btn-text">Login</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+
+        <div class="divider">or</div>
+
+        <button type="button" class="oauth-btn google-btn" id="googleLoginBtn">
+          <svg class="oauth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="1"></circle>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <span class="error-message" id="loginError"></span>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form class="form signup" id="signupForm">
+        <h2>Create Account</h2>
+        <p class="form-subtitle">Start tracking your study progress</p>
+
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="signupName" 
+            placeholder="Full name" 
+            required
+            autocomplete="name"
+          >
+          <span class="error-message" id="signupNameError"></span>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="email" 
+            id="signupEmail" 
+            placeholder="Email address" 
+            required
+            autocomplete="email"
+          >
+          <span class="error-message" id="signupEmailError"></span>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password" 
+            id="signupPassword" 
+            placeholder="Password (min. 6 characters)" 
+            required
+            autocomplete="new-password"
+          >
+          <span class="error-message" id="signupPasswordError"></span>
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            placeholder="Confirm password" 
+            required
+            autocomplete="new-password"
+          >
+          <span class="error-message" id="confirmPasswordError"></span>
+        </div>
+
+        <button type="submit" class="submit-btn" id="signupBtn">
+          <span class="btn-text">Sign Up</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+
+        <div class="divider">or</div>
+
+        <button type="button" class="oauth-btn google-btn" id="googleSignupBtn">
+          <svg class="oauth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="1"></circle>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <span class="error-message" id="signupError"></span>
+      </form>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="Index.html" style="color: #667eea; text-decoration: none; font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='#764ba2'" onmouseout="this.style.color='#667eea'">← Back to Home</a>
+    </div>
+
+  </div>
+
+  <!-- Auth Script (Modular Firebase SDK) -->
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

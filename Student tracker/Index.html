@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tracker - Landing Page</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    
+    <input type="checkbox" id="nav-toggle" hidden>
+
+    <label for="nav-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <label for="nav-toggle" class="overlay"></label>
+
+    <div class="app-container">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2 class="sidebar-logo">📚 Study Tracker</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="index.html" class="sidebar-link active">🏠 Home</a>
+          <a href="#features" class="sidebar-link">✨ Features</a>
+          <a href="#how-it-works" class="sidebar-link">📖 How It Works</a>
+          <a href="#contact" class="sidebar-link">📞 Contact</a>
+          <a href="login.html" class="sidebar-link">🔐 Login</a>
+          <a href="admin-login.html" class="sidebar-link">⚙️ Admin</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="landing">
+          <header class="landing-header">
+            <h1>STUDY TRACKER</h1>
+            <p>WELCOME TO YOUR STUDY COMPANION</p>
+          </header>
+        <section class="intro">
+            <p>Welcome to Study Tracker — Stay organized, build better habits, and stay consistent with your academic goals.
+
+Study Tracker helps students plan their daily tasks, track habits, and measure progress — all in one simple, distraction-free platform.
+
+Whether you're preparing for exams, managing assignments, or trying to stay productive every day, Study Tracker keeps you focused and accountable.</p>
+            <div class="landing-image">
+              <a href="asset/image/brooke-cagle-.jpg" download>
+                <img src="asset/image/brooke-cagle-.jpg" alt="Study Tracker Preview" class="download-img">
+              </a>
+            </div>
+          </section>
+<section class="how-it-works" id="how-it-works">
+            <h2>How to Use Study Tracker</h2>
+            <div class="steps">
+              <div class="step-card">
+                <div class="step-icon">✍️</div>
+                <h3>1. Create Your Tasks</h3>
+                <p>Write down tasks you want to complete for the day. Break big tasks into smaller steps for easy progress.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-icon">📊</div>
+                <h3>2. Track Daily Habits</h3>
+                <p>Add habits like reading or coding and track your daily streaks.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-icon">✓</div>
+                <h3>3. Mark Tasks Completed</h3>
+                <p>Click tasks when done to visually track your progress.</p>
+              </div>
+            </div>
+          </section>
+<section class="features" id="features">
+            <h2>Why Choose Study Tracker?</h2>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Study Session Timer</h3>
+                <p>Built-in Pomodoro timer to keep you focused and productive</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Subject-Based Tracking</h3>
+                <p>Organize tasks by subject or course for better clarity</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Progress Analytics</h3>
+                <p>Visualize your productivity with detailed progress charts</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Clean Dashboard</h3>
+                <p>Intuitive, distraction-free interface designed for students</p>
+              </div>
+            </div>
+          </section>
+<section class="audience">
+            <h2>Who Is This For?</h2>
+            <p>Study Tracker is built for students, self-learners, and anyone who wants to build strong study habits and stay on top of their academic goals.</p>
+          </section>
+<section class="illustrate">
+            <img alt="Study illustration" src="asset/image/Illustrated.jpg">
+            <div class="glass-box">
+              <p>💡 Illustration for visual reference</p>
+            </div>
+          </section>
+<section class="cta-section">
+            <div class="cta-box">
+              <h2>Ready to Take Control of Your Study?</h2>
+              <p>Start tracking your progress and build consistent study habits today.</p>
+              <a href="login.html" class="cta-btn">Start Tracking Now</a>
+            </div>
+          </section>
+<section class="contact-section" id="contact">
+            <div class="message">
+              <h5>FOLLOW OUR SOCIAL MEDIA PLATFORMS</h5>
+            </div>
+            <div class="contact">
+              <a href="https://www.facebook.com/" target="_blank" class="social-link social-facebook">
+                <img alt="Facebook logo" src="asset/image/Facebook.png">
+                <span>Facebook</span>
+              </a>
+              <a href="https://wa.me/2348086210802" target="_blank" class="social-link social-whatsapp">
+                <img alt="WhatsApp logo" src="asset/image/Whatsapp.jpg">
+                <span>WhatsApp</span>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" class="social-link social-instagram">
+                <img alt="Instagram logo" src="asset/image/Instagram.png">
+                <span>Instagram</span>
+              </a>
+              <a href="https://github.com/" target="_blank" class="social-link social-github">
+                <img alt="GitHub logo" src="asset/image/github-mark-white.png">
+                <span>GitHub</span>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <footer>
+          <p>© 2026 Study Tracker. All rights reserved.</p>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module">
+      import { initUserNotifications } from './js/notifications.js';
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        initUserNotifications();
+      });
+    </script>
+    <script src="js/main.js"></script>
